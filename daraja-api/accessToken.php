@@ -1,7 +1,7 @@
 <?php
 
-$consumerKey = "GB1oTAPEyl33CXAGGWX07Tz2VTcNgYZA23GgyK2WAajgKEsm";
-$consumerSecret = "JOMzTkqn0q2I97gwvGVrHvAPrlym9ugng7dOfLKfjC1HWA7GKNEBHWtm6NYHC0qV";
+$consumerKey = "ya7Xvi5jE8Gh3TdrDBqiCxmAAVdTLY9t";
+$consumerSecret = "rzpAHbg4RA9PEfcA";
 
 $encoded = base64_encode("$consumerKey:$consumerSecret");
 

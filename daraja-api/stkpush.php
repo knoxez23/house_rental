@@ -5,7 +5,6 @@ require '../db_connect.php';
 date_default_timezone_set('Africa/Nairobi');
 
 $partyA = $_POST['number'];
-$tenantName = $_POST['tenantName'];
 $amount = $_POST['amount'];
 
 $processrequestURL = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';

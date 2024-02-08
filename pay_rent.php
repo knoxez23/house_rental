@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pay Rent</title>
-    <!-- Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
-</head>
-<body>
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6 mx-auto">
@@ -23,18 +14,18 @@
                         </div>
                         <div class="form-group">
                             <label for="invoice">Invoice No</label>
-                            <input type="number" class="form-control" id="invoice" placeholder="Enter Invoice No">
+                            <input type="number" class="form-control" id="invoice" name="invoice" placeholder="Enter Invoice No">
                         </div>
                         <div class="form-group">
                             <label for="amount">Amount</label>
-                            <input type="number" class="form-control" id="amount" placeholder="Enter Amount">
+                            <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter Amount">
                         </div>
                         <div class="form-group">
                             <label for="mpesa_no">Mpesa Number</label>
-                            <input type="number" class="form-control" id="mpesa_no" placeholder="Enter Mpesa Number">
+                            <input type="number" class="form-control" id="mpesa_no" name="mpesa_no" placeholder="Enter Mpesa Number">
                             <small id="mpesaHelp" class="form-text text-muted">Please enter a 12-digit Mpesa number.</small>
                         </div>
-                        <button type="button" class="btn btn-primary" id="checkout-submit-dets" disabled>Pay Now</button>
+                        <button type="button" class="btn btn-primary" id="checkout-submit-dets" >Pay Now</button>
                         <button type="button" class="btn btn-secondary" id="confirm-paid" style="display: none;">I Have Already Paid</button>
                     </form>
                 </div>
@@ -42,55 +33,56 @@
         </div>
     </div>
 </div>
-
-<!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Bootstrap JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
+<script src="mpesa_pay.js"></script>
+<!-- <script>
     $(document).ready(function () {
-        $("#mpesa_no").on("input", function () {
-            if ($(this).val().length == 12) {
-                $("#checkout-submit-dets").attr("disabled", false);
-            } else {
-                $("#checkout-submit-dets").attr("disabled", true);
-            }
-        });
+    $("#mpesa_no").on("input", function () {
+        if ($(this).val().length == 12) {
+            $("#checkout-submit-dets").attr("disabled", false);
+        } else {
+            $("#checkout-submit-dets").attr("disabled", true);
+        }
+    });
 
-        $("#checkout-submit-dets").on("click", function () {
-            const mpesaNo = $("#mpesa_no").val();
-            const tenantName = $("#tenant_name").val();
-            const amount = $("#amount").val();
-            const invoice = $("#invoice").val();
+    $("#checkout-submit-dets").on("click", function () {
+        const mpesaNo = getElementById("mpesa_no");
+        const tenantName = getElementById("tenant_name");
+        const amount = getElementById("amount");
+        const invoice = getElementById("invoice");
 
-            // Simulated successful payment process
-            // Here you would implement your actual payment logic
-            // For now, I'm just simulating success with a setTimeout
-            setTimeout(function () {
-                $("#confirm-paid").show();
-            }, 1000);
-
-            // Upon successful payment, save payment details to the database
-            $.ajax({
-                url: "ajax.php",
-                type: "POST",
-                data: {
-                    action: "save_payment",
-                    tenant_id: tenantName, // You may need to adjust this to send the correct tenant ID
-                    invoice: invoice,
-                    amount: amount
-                    // Add other payment details as needed
-                },
-                success: function (response) {
-                    // Handle success response here if needed
-                    console.log("Payment details saved successfully.");
-                },
-                error: function (xhr, status, error) {
-                    console.error(xhr.responseText);
-                }
-            });
+        // Send Mpesa number and amount to stkpush.php for processing
+        $.ajax({
+            url: "./daraja-api/stkpush.php",
+            type: "POST",
+            data: {
+                mpesaNo: mpesaNo,
+                amount: amount,
+            },
+            // success: function (data) {
+            //     // Upon success, save payment details to the database
+            //     $.ajax({
+            //         url: "ajax.php",
+            //         type: "POST",
+            //         data: {
+            //             action: "save_mpesa_payment",
+            //             tenantName: tenantName,
+            //             invoice: invoice,
+            //             amount: amount,
+            //         },
+            //         success: function (response) {
+            //             // Handle success response here if needed
+            //             console.log("Payment details saved successfully.");
+            //         },
+            //         error: function (xhr, status, error) {
+            //             console.error(xhr.responseText);
+            //         }
+            //     });
+            // },
+            // error: function (xhr, status, error) {
+            //     console.error(xhr.responseText);
+            // }
         });
     });
-</script>
-</body>
-</html>
+});
+
+</script> -->
